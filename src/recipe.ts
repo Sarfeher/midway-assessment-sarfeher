@@ -15,6 +15,11 @@ export class Recipe {
   async readAll() {
     return await this.store.getValue();
   }
+
+  async read(id: number){
+    const recipes = await this.store.getValue();
+    return recipes.find((recipe) => recipe.id === id) as RecipeType;
+  }
 }
 
 

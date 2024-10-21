@@ -10,3 +10,15 @@ export async function list(store: Store<RecipeType[]>, args: string[]) {
   console.log('Your recipes:');
   console.log(formatted);
 }
+
+//add new function for details
+export async function details(store: Store<RecipeType[]>, args: string[]) {
+  const recipe = new Recipe(store);
+  const id = parseInt(args[0]);
+  if (isNaN(id)) {
+    throw new Error('Invalid recipe ID');
+  }
+  const recipeDetails = await recipe.read(id);
+  console.log(`ID: ${recipeDetails.id}`);
+  console.log(`Name: ${recipeDetails.name}`);
+}
