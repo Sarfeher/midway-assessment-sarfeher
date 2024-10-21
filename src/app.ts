@@ -13,9 +13,9 @@ export async function createApp(store: Store<RecipeType[]>, args: string[], ) {
     'details': details
   }
 
-  /* if (restArgs.length !== 0) {
+  if (command === 'list' && restArgs.length !== 0) {
     throw new AppError('The list command should not have any argument.');
-  } */
+  }
 
   if(command in commands) {
     const commandFunction = commands[command] 
